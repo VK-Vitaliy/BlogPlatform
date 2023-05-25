@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+Users list
+{% endblock %}
+
+{% block body %}
+    <h1>Users</h1>
+    <div>
+        <ul>
+            {% for users_id in users %}
+            <li>{{ users[users_id] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
