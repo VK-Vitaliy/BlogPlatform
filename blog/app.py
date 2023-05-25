@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
 from blog.users.views import users_app
+from blog.articles.views import articles_app
 
 
 def create_app() -> Flask:
@@ -15,5 +16,6 @@ def create_app() -> Flask:
 
 def register_blueprints(app: Flask):
     app.register_blueprint(users_app)
+    app.register_blueprint(articles_app)
 
 
