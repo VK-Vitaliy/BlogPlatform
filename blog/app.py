@@ -9,7 +9,7 @@ def create_app() -> Flask:
     app = Flask(__name__)
     register_blueprints(app)
     app.config["SECRET_KEY"] = "!-3e@ck&icam8&-qc8fm+vk7mz=lj%)li@va+e7-7_@@qvdria"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/blog.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
 
