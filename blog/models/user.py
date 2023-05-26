@@ -1,8 +1,11 @@
+from flask_login import UserMixin
 from sqlalchemy import Column, Integer, String, Boolean
 from blog.models.database import db
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
+    __tablename__ = "users"
+
     id = Column(Integer, primary_key=True)
     username = Column(String(255), nullable=False)
     email = Column(String(255), unique=True, nullable=False)
