@@ -29,7 +29,7 @@ def register_blueprints(app: Flask):
 def register_extensions(app):
     db.init_app(app)
     login_manager.init_app(app)
-    migrate = Migrate(app, db)
+    migrate = Migrate(app, db, compare_type=True)
     migrate.init_app(app, db)
 
 
