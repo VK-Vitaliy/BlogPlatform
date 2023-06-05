@@ -1,9 +1,7 @@
 import os
 
-from werkzeug.security import generate_password_hash
-
-from blog.app import create_app
 from blog.models.database import db
+from blog.app import create_app
 
 app = create_app()
 

@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_migrate import Migrate
+
 from blog.views.auth import auth_app, login_manager
 from blog.models.database import db
 from blog.security import flask_bcrypt
@@ -28,9 +29,10 @@ def register_blueprints(app: Flask):
     app.register_blueprint(authors_app)
 
 
-def register_extensions(app):
+def register_extensions(app: Flask):
     db.init_app(app)
     login_manager.init_app(app)
     flask_bcrypt.init_app(app)
     migrate = Migrate(app, db, compare_type=True)
     migrate.init_app(app, db)
+
