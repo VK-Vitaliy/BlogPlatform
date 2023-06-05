@@ -4,6 +4,7 @@ from blog.auth.views import auth_app, login_manager
 from blog.users.views import users_app
 from blog.articles.views import articles_app
 from blog.models.database import db
+from blog.security import flask_bcrypt
 
 
 def create_app() -> Flask:
@@ -11,7 +12,6 @@ def create_app() -> Flask:
     app.config.from_object("blog.config")
     register_blueprints(app)
     register_extensions(app)
-
 
     @app.route("/")
     def index():
@@ -29,7 +29,6 @@ def register_blueprints(app: Flask):
 def register_extensions(app):
     db.init_app(app)
     login_manager.init_app(app)
+    flask_bcrypt.init_app(app)
     migrate = Migrate(app, db, compare_type=True)
     migrate.init_app(app, db)
-
-
