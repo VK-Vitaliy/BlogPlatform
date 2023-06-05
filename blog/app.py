@@ -1,10 +1,11 @@
 from flask import Flask, render_template
 from flask_migrate import Migrate
-from blog.auth.views import auth_app, login_manager
-from blog.users.views import users_app
-from blog.articles.views import articles_app
+from blog.views.auth import auth_app, login_manager
 from blog.models.database import db
 from blog.security import flask_bcrypt
+from blog.views.users import users_app
+from blog.views.articles import articles_app
+from blog.views.authors import authors_app
 
 
 def create_app() -> Flask:
@@ -24,6 +25,7 @@ def register_blueprints(app: Flask):
     app.register_blueprint(users_app)
     app.register_blueprint(articles_app)
     app.register_blueprint(auth_app)
+    app.register_blueprint(authors_app)
 
 
 def register_extensions(app):
