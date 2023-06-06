@@ -7,14 +7,12 @@ Article #{{ article.id }}: {{ article.title }}
 <div>
     <p>{{ article.body }}</p>
     {% if article.tags %}
-    <div>Tags:</div>
-    <ul>
-        {% for tag in article.tags %}
-        <li>{{ tag.name }}</li>
-        {% endfor %}
-    </ul>
+    <div class="col-6">Tags:</div>
+    {% for tag in article.tags %}
+    <span class="badge bg-secondary">{{ tag.name }}</span>
+    {% endfor %}
     {% endif %}
-    <div>Published {{ article.dt_created }}</div>
-    <div>by {{ article.author.user.username }}</div>
+    <div><small class="text-muted">Published {{ article.dt_created.strftime("%d-%m-%Y %H:%M:%S") }} </small></div>
+    <div><small class="text-muted">by {{ article.author.user.username }}</small></div>
 </div>
 {% endblock %}
