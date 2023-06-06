@@ -8,6 +8,8 @@ from blog.views.users import users_app
 from blog.views.articles import articles_app
 from blog.views.authors import authors_app
 
+from blog.admin import admin
+
 
 def create_app() -> Flask:
     app = Flask(__name__)
@@ -35,4 +37,4 @@ def register_extensions(app: Flask):
     flask_bcrypt.init_app(app)
     migrate = Migrate(app, db, compare_type=True)
     migrate.init_app(app, db)
-
+    admin.init_app(app)
